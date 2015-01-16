@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-     </head>
-     <body>
+    </head>
+    <body>
         <h1>School Register</h1>
         {% block login_logout_panel %}
+            <nav>
             <ul>
                 <li>
                     <a href="{{ path('homepage') }}">
@@ -15,8 +22,13 @@
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                         </a>
-                   </li>
-               {% else %}
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_pupil') }}">
+                            pupils
+                        </a>
+                    </li>
+                {% else %}
                     <li>
                         <a href="{{ path('fos_user_security_login') }}">
                             {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
@@ -24,8 +36,9 @@
                     </li>
                 {% endif %}
             </ul>
+            </nav>
         {% endblock login_logout_panel %}
-         {% block body %}{% endblock %}
-         {% block javascripts %}{% endblock %}
-     </body>
- </html>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
